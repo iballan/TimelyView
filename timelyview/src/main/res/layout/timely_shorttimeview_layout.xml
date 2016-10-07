@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+
+    <!-- Hours -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <com.mbh.timelyview.TimelyView
+            android:id="@+id/ttv_hours_left"
+            style="@style/TimelyTimeViewStyle"/>
+
+        <com.mbh.timelyview.TimelyView
+            android:id="@+id/ttv_hours_right"
+            style="@style/TimelyTimeViewStyle"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/tv_seperator1"
+        android:text="@string/time_seperator"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <com.mbh.timelyview.TimelyView
+            android:id="@+id/ttv_minutes_left"
+            style="@style/TimelyTimeViewStyle"/>
+
+        <com.mbh.timelyview.TimelyView
+            android:id="@+id/ttv_minutes_right"
+            style="@style/TimelyTimeViewStyle"/>
+    </LinearLayout>
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:gravity="center"-->
+        <!--android:id="@+id/tv_seperator2"-->
+        <!--android:text="@string/time_seperator"/>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="2"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:weightSum="2">-->
+
+        <!--<TimelyView-->
+            <!--android:id="@+id/ttv_seconds_left"-->
+            <!--style="@style/TimelyTimeViewStyle"/>-->
+
+        <!--<TimelyView-->
+            <!--android:id="@+id/ttv_seconds_right"-->
+            <!--style="@style/TimelyTimeViewStyle"/>-->
+    <!--</LinearLayout>-->
+</LinearLayout>
