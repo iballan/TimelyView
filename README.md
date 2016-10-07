@@ -15,7 +15,7 @@ Usage :
 
 XML Layout:
 ``` xml
-<com.mbh.timelytextview.TimelyTimeView
+<com.mbh.timelyview.TimelyTimeView
    android:id="@+id/ttv"
    android:layout_width="wrap_content"
    android:layout_height="60dp"
@@ -25,7 +25,7 @@ XML Layout:
    android:layout_gravity="center"/>
 	   
 	   
-<com.mbh.timelytextview.TimelyShortTimeView
+<com.mbh.timelyview.TimelyShortTimeView
 	android:id="@+id/tstv_hours"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
