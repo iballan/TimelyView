@@ -1,6 +1,7 @@
-TimelyTimeView
+TimelyView
 ==============
 
+[![](https://jitpack.io/v/iballan/TimelyView.svg)](https://jitpack.io/#iballan/TimelyView)
 
 ## Animated Time View like Timely app
 
