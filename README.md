@@ -8,7 +8,7 @@ TimelyView
 Screenshots:
 --------
 
-![Screenshots/screenshot1](https://github.com/iballan/TimelyTextView/raw/master/Screenshots/TimelyTimeView_screenshot.gif)  ![Screenshots/screenshot2](https://github.com/iballan/TimelyTextView/raw/master/Screenshots/TimelyView_Screenshot.gif)
+![Screenshots/screenshot1](https://raw.githubusercontent.com/iballan/TimelyView/master/Screenshots/TimelyTimeView_screenshot.gif) 	 ![Screenshots/screenshot2](https://raw.githubusercontent.com/iballan/TimelyView/master/Screenshots/TimelyView_Screenshot.gif)
 
 
 
