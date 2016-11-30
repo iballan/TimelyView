@@ -86,7 +86,7 @@ You can install using Gradle:
 	    maven { url "https://jitpack.io" }
 	}
 	dependencies {
-	    compile 'com.github.iballan:TimelyView:1.0.0'
+	    compile 'com.github.iballan:TimelyView:1.0.2'
 	}
 ```
 

@@ -16,7 +16,7 @@ import com.nineoldandroids.util.Property;
 
 public class TimelyView extends View {
     private static final float RATIO = 1f; // square
-//    private static final float RATIO = 4f / 3f; // for any ratio
+    //    private static final float RATIO = 4f / 3f; // for any ratio
     private static final Property<TimelyView, float[][]> CONTROL_POINTS_PROPERTY = new Property<TimelyView, float[][]>(float[][].class, "controlPoints") {
         @Override
         public float[][] get(TimelyView object) {
@@ -28,15 +28,14 @@ public class TimelyView extends View {
             object.setControlPoints(value);
         }
     };
+    int lastEnd = -1;
+    int lastStart = -1;
     private Paint mPaint = null;
     private Path mPath = null;
     private float[][] controlPoints = null;
     private int textColor = Color.BLACK;
     private boolean isRoundedCorner = true;
     private float strokeWidth = 5.0f;
-    int lastEnd = -1;
-    int lastStart = -1;
-
     private int width = 1;
     private int height = 1;
 
@@ -64,12 +63,12 @@ public class TimelyView extends View {
         init();
     }
 
-    public void setRoundedCorner(boolean isRoundedCorner){
+    public void setRoundedCorner(boolean isRoundedCorner) {
         this.isRoundedCorner = isRoundedCorner;
         init();
     }
 
-    protected void setTextColorAndCorner(int textColor, boolean isRoundedCorner){
+    protected void setTextColorAndCorner(int textColor, boolean isRoundedCorner) {
         this.textColor = textColor;
         this.isRoundedCorner = isRoundedCorner;
         init();
@@ -85,7 +84,8 @@ public class TimelyView extends View {
     }
 
     public ObjectAnimator animate(int start, int end) {
-        lastEnd = end; lastStart = start;
+        lastEnd = end;
+        lastStart = start;
         float[][] startPoints = NumberUtils.getControlPointsFor(start);
         float[][] endPoints = NumberUtils.getControlPointsFor(end);
 
@@ -100,20 +100,21 @@ public class TimelyView extends View {
         return ObjectAnimator.ofObject(this, CONTROL_POINTS_PROPERTY, new TimelyEvaluator(), startPoints, endPoints);
     }
 
-    protected ObjectAnimator animateCarefully(int end){
-        if(lastEnd == end) return null;
+    protected ObjectAnimator animateCarefully(int end) {
+        if (lastEnd == end) return null;
 
         return animate(end);
     }
 
-    protected ObjectAnimator animateCarefully(int start, int end){
-        if(lastEnd ==-1|| lastStart==-1){
-            lastEnd = end; lastStart = start;
-        }else if(lastEnd == end && lastStart == start){
+    protected ObjectAnimator animateCarefully(int start, int end) {
+        if (lastEnd == -1 || lastStart == -1) {
+            lastEnd = end;
+            lastStart = start;
+        } else if (lastEnd == end && lastStart == start) {
             return null;
         }
 
-        return animate(start,end);
+        return animate(start, end);
     }
 
     @Override
@@ -123,11 +124,7 @@ public class TimelyView extends View {
 
         int length = controlPoints.length;
 
-//        height = getMeasuredHeight();
-//        width = getMeasuredWidth();
-
-        float minDimen = height > width ? width : height;
-
+        final float minDimen = height > width ? width - strokeWidth : height - strokeWidth;
         mPath.reset();
         mPath.moveTo(minDimen * controlPoints[0][0], minDimen * controlPoints[0][1]);
         for (int i = 1; i < length; i += 3) {
@@ -151,11 +148,10 @@ public class TimelyView extends View {
         int maxHeight = (int) (widthWithoutPadding / RATIO);
 
         if (widthWithoutPadding > maxWidth) {
-            width = maxWidth + getPaddingLeft() + getPaddingRight()+(int)strokeWidth;
+            width = maxWidth + getPaddingLeft() + getPaddingRight() + (int) (strokeWidth);
         } else {
-            height = maxHeight + getPaddingTop() + getPaddingBottom()+(int)strokeWidth;
+            height = maxHeight + getPaddingTop() + getPaddingBottom() + (int) (strokeWidth);
         }
-
         setMeasuredDimension(width, height);
     }
 
